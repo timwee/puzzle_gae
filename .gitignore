@@ -1,0 +1,23 @@
+# use glob syntax.
+syntax: glob
+*.pyc
+*~
+*.bak
+*.off
+*.old
+.DS_Store
+
+# eclipse conf file
+.settings
+.classpath
+.project
+.manager
+
+# other scm
+.svn
+.CVS
+.hg*
+
+# switch to regexp syntax.
+#  syntax: regexp
+#  ^\.pc/
