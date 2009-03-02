@@ -1,0 +1,13 @@
+<table id="puzzle_list" class="listing">
+  <tr>
+    <th>Title</th>
+    <th>Published Date:</th>
+  </tr>
+  {% for p in puzzles %}
+  <tr>
+    <td><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></td>
+    <td>{{ p.published|date:"d M Y" }}</td>      
+  </tr>  
+  {% endfor %}
+</table>
+  

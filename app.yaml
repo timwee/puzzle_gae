@@ -10,6 +10,10 @@ handlers:
 - url: /js
   static_dir: js
 
+- url: /test.*
+  script: gaeunit.py
+
 - url: .*
   script: main.py
+
 

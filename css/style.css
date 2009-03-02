@@ -1,0 +1,21 @@
+body {
+  text-align:center;
+  min-width:800px;
+}
+
+div#sidebar {
+  float: left;
+  width: 200px;
+}
+
+div#content {
+  float:right;
+  width: 600px;
+}
+
+div#main_container {
+  width:800px;
+  position:relative;
+  margin: 1.25em auto;
+  text-align:left;
+}
