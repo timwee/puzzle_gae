@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}{{ solution.title }}{% endblock %}
+
+{% block content %}
+  
+  {% include "puzzle_desc.html" %}
+  <div class="data_block" id="solution">
+  {% include "solution_desc.html" %}
+  </div>
+{% endblock %}
+

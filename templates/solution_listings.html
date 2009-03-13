@@ -1,0 +1,18 @@
+<span class="link datablock">
+  <a href="{% url puzzles.views.create_solution puzzle_id %}">Submit Solution</a>
+</span>
+<table id="solution_list" class="listing">
+  <tr>
+    <th>Author</th>
+    <th>Solution</th>
+    <th>Posted Date:</th>
+  </tr>
+  {% for s in solutions %}
+  <tr>
+    <td>{{ s.author }}</td>
+    <td><a href="{{ s.get_absolute_url }}">{{ s.title }}</a></td>
+    <td>{{ s.posted|timesince }}</td>      
+  </tr>  
+  {% endfor %}
+</table>
+  

@@ -11,6 +11,7 @@ INSTALLED_APPS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.http.ConditionalGetMiddleware',
+    'puzzles.middleware.AddUserToRequestMiddleware',
 )
 ROOT_URLCONF = 'urls'
 TEMPLATE_CONTEXT_PROCESSORS = ()

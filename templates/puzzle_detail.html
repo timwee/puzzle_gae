@@ -1,16 +1,11 @@
 {% extends "base.html" %}
+{% load template_library %}
 
 {% block title %} Puzzle: {{ puzzle.title }} {% endblock %}
 
 {% block content %}
-<div>
-  <h4>Title:</h4> </t> {{ puzzle.title }}
+  {% include "puzzle_desc.html" %}
+<div class="data_block" id="solutions">
+  {% show_solutions puzzle %} 
 </div>
-<div id="puzzle_desc_block">
-  <span>Puzzle Description:</span>
-  <div id="puzzle_desc">
-    {{ puzzle.description }}
-  </div>
-</div>
-
 {% endblock %}

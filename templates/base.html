@@ -7,11 +7,21 @@
   </head>
 
   <body>
+    <div id="top_container">
+      {% block top %}
+        {%if user%}
+        <a class="novisit" href="{{sign_out}}">Sign out</a>
+        {% else %}
+        <a class="novisit" href="{{sign_in}}">Sign in</a>
+        {%endif%}
+      {% endblock %}
+    </div>
     <div id="main_container">
       <div id="sidebar">
           {% block sidebar %}
           <ul>
             <li><a href="{% url puzzles.views.all_puzzles %}">View All Puzzles</a></li>
+            <li><a href="{% url puzzles.views.create_puzzle %}">Create New Puzzle</a></li>
           </ul>
           {% endblock %}
       </div>
