@@ -12,14 +12,14 @@ logging.info('Loading %s, app version = %s',
              __name__, os.getenv('CURRENT_VERSION_ID'))
 
 # Delete the preloaded copy of Django.
-#for key in [key for key in sys.modules if key.startswith('django')]:
-# del sys.modules[key]
+for key in [key for key in sys.modules if key.startswith('django')]:
+  del sys.modules[key]
 
 # Force sys.path to have our own directory first, so we can import from it.
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
 # Import Django from a zipfile.
-#sys.path.insert(0, os.path.abspath('django.zip'))
+sys.path.insert(0, os.path.abspath('django.zip'))
 
 # Fail early if we can't import Django.  Log identifying information.
 import django
