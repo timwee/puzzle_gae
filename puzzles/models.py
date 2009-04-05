@@ -22,7 +22,7 @@ class Prog_Language(db.Model):
 
 class Solution(db.Model):
   author = db.UserProperty(required=True, auto_current_user_add=True)
-  puzzle = db.ReferenceProperty(Puzzle)
+  puzzle = db.ReferenceProperty(Puzzle, required=True)
   posted = db.DateTimeProperty(auto_now=True)
   #language = db.ReferenceProperty(Prog_Language)
   title = db.StringProperty(required=True)
