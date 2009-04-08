@@ -2,7 +2,58 @@
 from google.appengine.ext import db
 from google.appengine.api import memcache
 
+from pygments import highlight
+from pygments.lexers import get_lexer_by_name
+from pygments.formatters import HtmlFormatter
+
 from django.db import models
+
+class Prog_Language(object):
+  SYNTAX = (
+		('scala','Scala'),
+		('java','Java'),
+		('scheme','Scheme'),
+		('fortran','Fortran'),
+		('cpp','C++'),
+		('c','C'),
+		('python','Python'),
+		('smalltalk','Smalltalk'),
+		('ocaml','OCaml'),
+		('actionscript','ActionScript'),
+		('ruby','Ruby'),
+		('io','io'),
+		('haskell','Haskell'),
+		('lua','Lua'),
+		('erlang','Erlang'),
+		('clojure','Clojure'),
+		('tcl','tcl'),
+		('perl','perl'),
+		('c#','C#'),
+		('objective-c','objective-c'),
+		('javascript','javascript'),
+		('cl','Common Lisp'),
+		('php','PHP')
+  )
+
+from google.appengine.ext import db
+
+class HookedModel(db.Model):
+  """A subclass of model that provides hooks for extra checks."""
+
+  def pre_write(self):
+    """Called before a model is written to the store."""
+    pass
+
+  def post_read(self):
+    """Called after a model is read from the store."""
+    pass
+
+  def _populate_internal_entity(self, *args, **kwds):
+    """Introduces hooks into the entity storing process."""
+    self.pre_write()
+    return db.Model._populate_internal_entity(self, *args, **kwds)
+
+
 
 class Puzzle(db.Model):
   """ represents a puzzle """
@@ -16,23 +67,30 @@ class Puzzle(db.Model):
   def get_absolute_url(self):
     return ('puzzles.views.view_puzzle', [str(self.key().id())])
 
-class Prog_Language(db.Model):
-  name = db.StringProperty(required=True)
-  homepage = db.LinkProperty()
 
-class Solution(db.Model):
+class Solution(HookedModel):
   author = db.UserProperty(required=True, auto_current_user_add=True)
   puzzle = db.ReferenceProperty(Puzzle, required=True)
   posted = db.DateTimeProperty(auto_now=True)
-  #language = db.ReferenceProperty(Prog_Language)
+  language = db.StringProperty(required=True)
   title = db.StringProperty(required=True)
   code = db.TextProperty(required=True)
   formatted_code = db.TextProperty()
 
   def format_code(self):
     if not self.formatted_code:
-      pass #format
+      self.formatted_code = self.create_formatted_code()
     return self.formatted_code
+
+  def create_formatted_code(self):
+    if not self.code or not self.language:
+      return ''
+    lexer = get_lexer_by_name(self.language, stripall=True)
+    formatter = HtmlFormatter(linenos=True, cssclass="source")
+    return highlight(self.code, lexer, formatter)
+
+  def pre_write(self):
+    self.formatted_code = self.create_formatted_code()
 
   @models.permalink
   def get_absolute_url(self):

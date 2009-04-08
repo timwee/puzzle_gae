@@ -47,6 +47,7 @@ class PuzzleForm(djangoforms.ModelForm):
 class SolutionForm(forms.Form):
   #author = forms.UserProperty(required=True)
   #language = db.ReferenceProperty(Prog_Language)
+  language = forms.ChoiceField(choices=Prog_Language.SYNTAX)
   title = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'size': 60}))
   code = forms.CharField(widget=forms.Textarea(attrs={'cols': 60}))
   puzzle = forms.IntegerField(widget=forms.HiddenInput())
@@ -113,6 +114,7 @@ def create_solution(request, puzzle_id):
     sol = Solution(author=users.get_current_user(),
                    puzzle=puzzle,
                    title=form.cleaned_data['title'],
+                   language=form.cleaned_data['language'],
                    code=form.cleaned_data['code'])
     sol.put()
     return HttpResponseRedirect(sol.get_absolute_url())
@@ -128,7 +130,7 @@ def edit_solution(request, puzzle_id, solution_id):
   solution = get_object_or_404(Solution, solution_id)
 
   if request.method != 'POST':
-    form = SolutionForm(initial={ 'puzzle' : puzzle_id, 'title':solution.title, 'code':solution.format_code()})
+    form = SolutionForm(initial={ 'puzzle' : puzzle_id, 'title':solution.title, 'code':solution.code })
     return respond(request,"solution_form.html", {'solution_form' : form, 'puzzle' : puzzle })
   else:
     form = SolutionForm(request.POST)
