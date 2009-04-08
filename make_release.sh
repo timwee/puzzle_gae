@@ -9,12 +9,14 @@
 # each update.
 
 ZIPFILE=django.zip
+PYGMENTS_ZIP=pygments.zip
 RELEASE=release
 FILES="app.yaml index.yaml __init__.py main.py settings.py urls.py"
 DIRS="static templates css js puzzles"
 
 # Remove old $ZIPFILE file.
 rm -rf $ZIPFILE
+rm -rf $PYGMENTS_ZIP
 
 # Create new $ZIPFILE file.
 # We prune:
@@ -42,6 +44,10 @@ zip -q $ZIPFILE `find django \
     -name commands -prune -o \
     -type f ! -name \*.py[co] ! -name \*.[pm]o -print`
 
+zip -q $PYGMENTS_ZIP `find pygments \
+    -name test -prune -o \
+    -name comments -prune -o \
+    -type f ! -name \*.py[co] ! -name \*.[pm]o -print`
 # Remove old $RELEASE directory.
 rm -rf $RELEASE
 
@@ -49,7 +55,7 @@ rm -rf $RELEASE
 mkdir $RELEASE
 
 # Create symbolic links.
-for x in $FILES $DIRS $ZIPFILE
+for x in $FILES $DIRS $ZIPFILE $PYGMENTS_ZIP 
 do
     ln -s ../$x $RELEASE/$x
 done

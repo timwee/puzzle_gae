@@ -59,7 +59,7 @@ class SolutionTest(GAEModelTest):
   def test_solution_getAbsoluteUrl(self):
     puzzle = Puzzle(title="title", description="description")
     puzzle_key = puzzle.put()
-    solution = Solution(title="title", detail="description", puzzle=puzzle)
+    solution = Solution(title="title", code="description", formatted_code="formatted", puzzle=puzzle)
     key = solution.put()
     expected = db.get(key)
     self.assertEqual("/puzzle/"+ str(puzzle.key().id()) + "/solution/" + str(expected.key().id()) + "/view",

@@ -48,7 +48,7 @@ class SolutionForm(forms.Form):
   #author = forms.UserProperty(required=True)
   #language = db.ReferenceProperty(Prog_Language)
   title = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'size': 60}))
-  detail = forms.CharField(widget=forms.Textarea(attrs={'cols': 60}))
+  code = forms.CharField(widget=forms.Textarea(attrs={'cols': 60}))
   puzzle = forms.IntegerField(widget=forms.HiddenInput())
 
 ### Views ###
@@ -113,7 +113,7 @@ def create_solution(request, puzzle_id):
     sol = Solution(author=users.get_current_user(),
                    puzzle=puzzle,
                    title=form.cleaned_data['title'],
-                   detail=form.cleaned_data['detail'])
+                   code=form.cleaned_data['code'])
     sol.put()
     return HttpResponseRedirect(sol.get_absolute_url())
 
@@ -128,7 +128,7 @@ def edit_solution(request, puzzle_id, solution_id):
   solution = get_object_or_404(Solution, solution_id)
 
   if request.method != 'POST':
-    form = SolutionForm(initial={ 'puzzle' : puzzle_id, 'title':solution.title, 'detail':solution.detail })
+    form = SolutionForm(initial={ 'puzzle' : puzzle_id, 'title':solution.title, 'code':solution.format_code()})
     return respond(request,"solution_form.html", {'solution_form' : form, 'puzzle' : puzzle })
   else:
     form = SolutionForm(request.POST)

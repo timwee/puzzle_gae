@@ -26,7 +26,13 @@ class Solution(db.Model):
   posted = db.DateTimeProperty(auto_now=True)
   #language = db.ReferenceProperty(Prog_Language)
   title = db.StringProperty(required=True)
-  detail = db.TextProperty(required=True)
+  code = db.TextProperty(required=True)
+  formatted_code = db.TextProperty()
+
+  def format_code(self):
+    if not self.formatted_code:
+      pass #format
+    return self.formatted_code
 
   @models.permalink
   def get_absolute_url(self):
