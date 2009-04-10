@@ -2,37 +2,43 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
+    <link rel="stylesheet" href="/css/blueprint/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/blueprint/print.css" type="text/css" media="print" />    
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/code.css" />
+    <!--[if IE]><link rel="stylesheet" href="/css/blueprint/ie.css" type="text/css" media="screen, projection" /><![endif]-->
     <title>{% block title %}Puzzles{% endblock %}</title>
   </head>
 
   <body>
-    <div id="top_container">
-      {% block top %}
-        {%if user%}
-        <a class="novisit" href="{{sign_out}}">Sign out</a>
-        {% else %}
-        <a class="novisit" href="{{sign_in}}">Sign in</a>
-        {%endif%}
-      {% endblock %}
-    </div>
-    <div id="main_container">
-      <div id="sidebar">
-          {% block sidebar %}
-          <ul>
-            <li><a href="{% url puzzles.views.all_puzzles %}">View All Puzzles</a></li>
-            <li><a href="{% url puzzles.views.create_puzzle %}">Create New Puzzle</a></li>
-          </ul>
-          {% endblock %}
+    <div class="container">
+      <div id="header" class="span-24 last prepend-top append-bottom">
+          <h1>Idiomatic Fu</h1>
       </div>
+      <hr />
 
-      <div id="content">
-          {% block content %}{% endblock %}
+      <div id="nav" class="span-24 last">
+        <ul>
+          <li class="first-item"><a href="{% url puzzles.views.create_puzzle %}">Create New Puzzle</a></li>
+          <li><a href="{% url puzzles.views.all_puzzles %}">View All Puzzles</a></li>
+          <li class="last-item">
+          {% block top %}
+            {%if user%}
+            <a class="novisit" href="{{sign_out}}">Sign out</a>
+            {% else %}
+            <a class="novisit" href="{{sign_in}}">Sign in</a>
+            {%endif%}
+          {% endblock %}
+          </li>
+        </ul>
       </div>
-      <div id="comments">
+      <hr />
+      <div id="content" class="span-24 last">
+          {% block content %}{% endblock %}
+        <div id="comments">
           {% block comments %}{% endblock %}
         </div>
+      </div>
     </div>
   </body>
 </html>
