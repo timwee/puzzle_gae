@@ -1,10 +1,27 @@
-<div id="solution_desc_block">
-  <div id="solution_title">Solution Title: {{ solution.title }}</div>
-  <div id="solution_author">Solution Author: {{ solution.author }}</div>
-  <div id="solution_posted">Posted: {{ solution.posted|timesince }}</div>
+<div id="solution_desc_block" class="box">
+  <div id="solution_title" class="span-4">
+    <p class="caps">Solution Title: </p>
+  </div>
+
+  <div class="span-18 last">
+    <p class="caps">{{ solution.title }}</p>
+  </div>
+
+  <div id="solution_author" class="span-4" >
+    <p class="caps">Author:</p>
+  </div>
+  <div class="last span-18">
+    <p>{{ solution.author }}</p>  
+    </div>
+  <div id="solution_posted" class="span-4" >
+    <p class="caps">Posted:</p>
+  </div>
+  <div class="last span-18">
+    <p>{{ solution.posted|timesince }}</p>  
+  </div>
 
 
-  <div id="solution_code" class="code">
+  <div id="solution_code" class="span-23 code">
     {{ solution.formatted_code|safe }}
   </div>
 

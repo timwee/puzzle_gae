@@ -5,14 +5,15 @@
 {% block content %}
   
   {% include "puzzle_desc.html" %}
-  <form action="" method="post" id="new_solution_form" >
-    <table>
-      {{ solution_form.as_table }}
-      <tr><td>
-        <input type="submit" value="Post New Solution">
-      </td></tr>
-    <table>
-  </form>
-  
+  <div class="span-22 box last">
+    <form action="" method="post" id="new_solution_form" >
+      <table>
+        {{ solution_form.as_table }}
+        <tr><td>
+          <input type="submit" value="Post New Solution">
+        </td></tr>
+      <table>
+    </form>
+  </div>  
 {% endblock %}
 

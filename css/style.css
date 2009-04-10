@@ -56,4 +56,9 @@ div.code {
   border-color: #666;
   border-width: 1px;
   font-size:1.25em;
+  max-height:1000px;
+}
+
+div.code table {
+  margin: 0;
 }
