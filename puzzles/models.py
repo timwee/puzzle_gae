@@ -3,6 +3,7 @@ from google.appengine.ext import db
 from google.appengine.api import memcache
 
 from pygments import highlight
+from pygments.styles import get_style_by_name
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
 
