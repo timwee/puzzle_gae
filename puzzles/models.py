@@ -70,7 +70,7 @@ class Puzzle(db.Model):
 
 
 class Solution(HookedModel):
-  author = db.UserProperty(required=True, auto_current_user_add=True)
+  author = db.UserProperty(auto_current_user_add=True)
   puzzle = db.ReferenceProperty(Puzzle, required=True)
   posted = db.DateTimeProperty(auto_now=True)
   language = db.StringProperty(required=True)

@@ -100,7 +100,6 @@ def view_puzzle(request, puzzle_id):
   puzzle = get_object_or_404(Puzzle, puzzle_id)
   return respond(request,"puzzle_detail.html", {'puzzle' : puzzle })
 
-@login_required
 def create_solution(request, puzzle_id):
   puzzle = get_object_or_404(Puzzle, puzzle_id)
   if request.method != 'POST':
@@ -124,7 +123,6 @@ def view_solution(request, puzzle_id, solution_id):
   solution = get_object_or_404(Solution, solution_id)
   return respond(request,"solution_detail.html", {'puzzle' : puzzle, 'solution':solution })
 
-@login_required
 def edit_solution(request, puzzle_id, solution_id):
   puzzle = get_object_or_404(Puzzle, puzzle_id)
   solution = get_object_or_404(Solution, solution_id)
