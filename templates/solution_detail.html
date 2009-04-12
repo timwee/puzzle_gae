@@ -10,5 +10,11 @@
   <hr style="height:2px;" />
   {% include "solution_desc.html" %}
   </div>
+<div id="submit_solution" class="box clear">
+  <a href="{% url puzzles.views.create_solution solution.puzzle.key.id %}">
+    <img src="/static/images/submit_another_sol.png" />
+  </a>
+</div>
+
 {% endblock %}
 
