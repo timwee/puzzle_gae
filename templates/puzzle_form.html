@@ -1,8 +1,15 @@
 {% extends "base.html" %}
-
 {% block title %}Create New Puzzle{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" type="text/css" href="/js/markitup/markitup/skins/markitup/style.css" />
+<link rel="stylesheet" type="text/css" href="/js/markitup/markitup/sets/default/style.css" />
+
+<script type="text/javascript" src="/js/markitup/jquery.pack.js"></script>
+<script type="text/javascript" src="/js/markitup/markitup/jquery.markitup.js"></script>
+<script type="text/javascript" src="/js/markitup/markitup/sets/default/set.js"></script>
+
+ 
   <div class="span-22 box last">
     <form action="" method="post" id="new_puzzle_form" >
       <table>
@@ -13,5 +20,11 @@
       <table>
     </form>
   </div>    
+<script type="text/javascript" >
+   $(document).ready(function() {
+     $(".markdown").markItUp(mySettings);
+   });
+</script>
+
 {% endblock %}
 

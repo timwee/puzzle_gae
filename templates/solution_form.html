@@ -3,7 +3,11 @@
 {% block title %}Create New Solution for Puzzle {{ puzzle.title }}{% endblock %}
 
 {% block content %}
-  
+<link rel="stylesheet" type="text/css" href="/js/markitup/skins/markitup/style.css" />
+<link rel="stylesheet" type="text/css" href="/js/markitup/sets/default/style.css" />
+<script type="text/javascript" src="/js/markitup/jquery.markitup.js"></script>
+<script type="text/javascript" src="/js/markitup/sets/default/set.js"></script>
+
   {% include "puzzle_desc.html" %}
   <div class="span-22 box last">
     <form action="" method="post" id="new_solution_form" >
@@ -15,5 +19,12 @@
       <table>
     </form>
   </div>  
+
+<script type="text/javascript" >
+   $(document).ready(function() {
+     $(".markdown").markItUp(myMarkdownSettings);
+   });
+</script>
+
 {% endblock %}
 

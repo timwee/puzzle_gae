@@ -39,17 +39,16 @@ def respond(request, template, params=None):
 
 
 ### Form classes ###
-class PuzzleForm(djangoforms.ModelForm):
-  class Meta:
-    model = Puzzle
-    exclude = ['created', 'published']
+class PuzzleForm(forms.Form):
+  title = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'size': 60}))
+  description = forms.CharField(widget=forms.Textarea(attrs={'cols': 120, 'class': 'markdown' }))
 
 class SolutionForm(forms.Form):
   #author = forms.UserProperty(required=True)
   #language = db.ReferenceProperty(Prog_Language)
   language = forms.ChoiceField(choices=Prog_Language.SYNTAX)
   title = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'size': 60}))
-  code = forms.CharField(widget=forms.Textarea(attrs={'cols': 60}))
+  code = forms.CharField(widget=forms.Textarea(attrs={'cols': 120, 'class' : 'codetext'}))
   puzzle = forms.IntegerField(widget=forms.HiddenInput())
 
 ### Views ###
@@ -68,15 +67,15 @@ def create_puzzle(request):
     return respond(request,"puzzle_form.html", {'puzzle_form' : form })
   else:
     form = PuzzleForm(request.POST)
-    errors = form.errors
-    if not errors:
-      try:
-        puzzle = form.save()
-        return HttpResponseRedirect(puzzle.get_absolute_url())
-      except ValueError, err:
-        errors['__all__'] = unicode(err)
-    if errors:
+    if not form.is_valid():
       return respond(request,"puzzle_form.html", {'puzzle_form' : form })
+
+    puzzle = Puzzle(
+                   title=form.cleaned_data['title'],
+                   description=form.cleaned_data['description'])
+    puzzle.put()
+    return HttpResponseRedirect(puzzle.get_absolute_url())
+
 
 @login_required
 def edit_puzzle(request, puzzle_id):
@@ -87,14 +86,14 @@ def edit_puzzle(request, puzzle_id):
   else:
     form = PuzzleForm(request.POST)
     errors = form.errors
-    if not errors:
-      try:
-        puzzle = form.save()
-        return HttpResponseRedirect(puzzle.get_absolute_url())
-      except ValueError, err:
-        errors['__all__'] = unicode(err)
-    if errors:
+    if not form.is_valid():
       return respond(request,"puzzle_form.html", {'puzzle_form' : form })
+
+    puzzle = Puzzle(
+                   title=form.cleaned_data['title'],
+                   description=form.cleaned_data['description'])
+    puzzle.put()
+    return HttpResponseRedirect(puzzle.get_absolute_url())
 
 def view_puzzle(request, puzzle_id):
   puzzle = get_object_or_404(Puzzle, puzzle_id)
