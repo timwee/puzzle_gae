@@ -112,10 +112,17 @@ div.grey-panel {
 }
 .blurb {
   max-height: 90px;
-  line-height:1.3;
-  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
-  font-size: 1.2em;
   margin 0;
   padding: 0 0 5px;
   overflow: hidden;
+}
+.full_blurb {
+  margin 0;
+  padding: 0 0 5px;
+}
+
+.blurb_text {
+  font-size: 1.2em;
+  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
+  line-height:1.3;
 }

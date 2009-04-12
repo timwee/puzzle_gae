@@ -1,4 +1,7 @@
-  <div class="span-22 box last puzzle_block">
+
+<script type="text/javascript" src="/js/jquery-ui/js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui/js/jquery-ui-1.7.1.custom.min.js"></script>
+  <div id="puzzle_desc_block" class="span-22 box last puzzle_block">
     <div class="stats_container span-3">
       <div class="count_button span-2 status">
         <span class="count-post">
@@ -10,12 +13,31 @@
 
     <div class="summary span-18">
       <h3><a href="{{ puzzle.get_absolute_url }}">{{ puzzle.title }}</a></h3>
-      <div class="blurb">
+      <div class="blurb_text blurb">
         {{ puzzle.description|safe }}
       </div>
-      <span style="display:inline">
-        <a href="{{ puzzle.get_absolute_url }}">Read more</a>
+      <span id="hide_blurb" style="display:none">
+        <a href="#">Hide</a>
+      </span>
+      <span id="read_more" style="display:inline">
+        <a href="#">Read more</a>
       </span>
     </div>
   </div>  
+
+<script>
+  $('#read_more').click(function() {
+    $('#puzzle_desc_block').removeClass('puzzle_block');
+    $('.blurb').switchClass('blurb', 'full_blurb');
+    $('#read_more').hide();
+    $('#hide_blurb').show();
+  });
+  $('#hide_blurb').click(function() {
+    $('#puzzle_desc_block').addClass('puzzle_block');
+    $('.full_blurb').switchClass('full_blurb', 'blurb');
+    $('#hide_blurb').hide();
+    $('#read_more').show();
+  });
+
+</script>
  
