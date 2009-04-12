@@ -1,16 +1,18 @@
-<div id="puzzle_desc_block" class="box">
-  <div id="puzzle_title" class="span-4">
+<div id="puzzle_desc_block" >
+  <div id="puzzle_title" class="box span-4">
     <p class="caps">Puzzle Title: </p>
   </div>
 
-  <div class="span-18 last">
+  <div class="span-18 last box">
     <p class="caps">{{ puzzle.title }}</p>
   </div>
 
-  <div id="puzzle_desc" class="span-4" >
-    <p class="caps">Description</p>
-  </div>
-  <div class="last span-18">
-    <p class="grey">{{ puzzle.description }}</p>  
+  <div class="grey-panel span-24 last ">
+    <div id="puzzle_desc" class="box span-4 grey-panel" >
+      <p class="caps">Description</p>
+    </div>
+    <div class="last span-18 box grey-panel">
+      <p>{{ puzzle.description }}</p>  
+    </div>
   </div>
 </div>

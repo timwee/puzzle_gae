@@ -66,3 +66,7 @@ div.code table {
 .grey {
   color: #676767;
 }
+
+div.grey-panel {
+  background-color: #cccccc;
+}
