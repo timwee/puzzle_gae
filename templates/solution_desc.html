@@ -12,7 +12,7 @@
       <p class="caps">Author:</p>
     </div>
     <div class="last span-18 box grey-panel">
-      <p>{{ solution.author }}</p>  
+      <p>{{ solution.author|default_if_none:"Anonymous" }}</p>  
     </div>
   </div>
   <div id="solution_posted" class="box span-4" >
