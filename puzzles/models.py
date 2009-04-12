@@ -64,6 +64,9 @@ class Puzzle(db.Model):
   created = db.DateTimeProperty(auto_now_add=True)
   published = db.DateTimeProperty(auto_now=True)
 
+  def solution_count(self):
+    return self.solution_set.count()
+
   @models.permalink
   def get_absolute_url(self):
     return ('puzzles.views.view_puzzle', [str(self.key().id())])

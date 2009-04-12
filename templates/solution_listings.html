@@ -3,18 +3,30 @@
     <img src="/static/images/submit_solution.png" />
   </a>
 </div>
-<table id="solution_list" class="listing">
-  <tr>
-    <th>Author</th>
-    <th>Solution</th>
-    <th>Posted Date:</th>
-  </tr>
+<div id="solution_list" class="span-24 last ">
   {% for s in solutions %}
-  <tr>
-    <td>{{ s.author }}</td>
-    <td><a href="{{ s.get_absolute_url }}">{{ s.title }}</a></td>
-    <td>{{ s.posted|timesince }}</td>      
-  </tr>  
+  <hr width="1px" background="#FFFFFF" />
+  <div class="span-22 box last solution_block">
+    <div class="stats_container span-3">
+      <div class="count_button span-2 status">
+        <span class="count-post">
+          <strong>placeholder</strong> 
+        </span>
+        votes 
+      </div>      
+    </div>
+
+    <div class="summary span-18">
+      <h3><a href="{{ s.get_absolute_url }}">{{ s.title }}</a></h3>
+      <div class="blurb">
+        solved in {{ s.language }}
+      </div>
+      <span style="display:inline">
+        <a href="{{ s.get_absolute_url }}">Read more</a>
+      </span>
+    </div>
+  </div>  
+
   {% endfor %}
-</table>
+</div>
   
