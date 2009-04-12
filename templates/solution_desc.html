@@ -22,6 +22,7 @@
     <p class="grey">{{ solution.posted|timesince }}</p>  
   </div>
 
+  {% include "third_party.html" %}
 
   <div id="solution_code" class="span-24 code">
     {{ solution.formatted_code|safe }}

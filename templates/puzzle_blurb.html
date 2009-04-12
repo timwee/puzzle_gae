@@ -1,0 +1,21 @@
+  <div class="span-22 box last puzzle_block">
+    <div class="stats_container span-3">
+      <div class="count_button span-2 status">
+        <span class="count-post">
+          <strong>{{ puzzle.solution_count }}</strong> 
+        </span>
+        solutions
+      </div>      
+    </div>
+
+    <div class="summary span-18">
+      <h3><a href="{{ puzzle.get_absolute_url }}">{{ puzzle.title }}</a></h3>
+      <div class="blurb">
+        {{ puzzle.description|safe }}
+      </div>
+      <span style="display:inline">
+        <a href="{{ puzzle.get_absolute_url }}">Read more</a>
+      </span>
+    </div>
+  </div>  
+ 
