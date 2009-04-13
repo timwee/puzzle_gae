@@ -4,14 +4,14 @@
 
 {% block content %}
  {% include "puzzle_blurb.html" %}
-  <div class="span-22 box last">
+  <div class="span-22 box clear last">
     <form action="" method="post" id="new_solution_form" >
       <table>
         {{ solution_form.as_table }}
-        <tr><td>
+        <tr><td colspan="2">
           <input type="submit" value="Post New Solution">
         </td></tr>
-      <table>
+      </table>
     </form>
   </div>  
 
