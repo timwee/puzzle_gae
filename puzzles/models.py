@@ -11,6 +11,7 @@ from django.db import models
 
 class Prog_Language(object):
   SYNTAX = (
+		('',''),
 		('actionscript','ActionScript'),
 		('c','C'),
 		('cpp','C++'),

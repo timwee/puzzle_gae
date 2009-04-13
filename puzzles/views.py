@@ -46,9 +46,9 @@ class PuzzleForm(forms.Form):
 class SolutionForm(forms.Form):
   #author = forms.UserProperty(required=True)
   #language = db.ReferenceProperty(Prog_Language)
-  language = forms.ChoiceField(choices=Prog_Language.SYNTAX)
-  title = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'size': 60}))
-  code = forms.CharField(widget=forms.Textarea(attrs={'cols': 120, 'class' : 'codetext'}))
+  language = forms.ChoiceField(choices=Prog_Language.SYNTAX, error_messages={'required':'Please select a language'})
+  title = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'size': 60}), error_messages={'required':'Please enter a title'})
+  code = forms.CharField(widget=forms.Textarea(attrs={'cols': 120, 'class' : 'codetext'}), error_messages={'required':'Please enter some code!'})
   puzzle = forms.IntegerField(widget=forms.HiddenInput())
 
 ### Views ###

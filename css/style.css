@@ -122,7 +122,17 @@ div.grey-panel {
 }
 
 .blurb_text {
-  font-size: 1.2em;
   font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
   line-height:1.3;
+}
+
+.errorlist {
+  padding-left: 20px;
+  color: #FF0000;
+  background: #FFFFCC url(http://www.b-list.org/media/admin/img/admin/icon_alert.gif) no-repeat scroll left top;
+  border-color: #FF0000;
+  border-style: solid;
+  border-width: border-width;
+  list-style: none;
+
 }
