@@ -35,6 +35,7 @@
           </li>
         </ul>
       </div>
+
       <hr />
       <div id="content" class="span-24 last">
           {% block content %}{% endblock %}
@@ -42,7 +43,30 @@
           {% block comments %}{% endblock %}
         </div>
       </div>
+
+      <div id="footer" class="span-24 last">
+        <a href="mailto:idiomatic.fu@gmail.com"> Feedback </a> | 
+      </div>
+
+      <div class="span-6 last clear">
+        <img src="http://code.google.com/appengine/images/appengine-noborder-120x30.gif" alt="Powered by Google App Engine" border="0" />
+      </div> 
+      <div class="span-24 last" style="height:100px;" />
     </div>
+
+    
+
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+        var pageTracker = _gat._getTracker("UA-8286297-2");
+        pageTracker._trackPageview();
+        } catch(err) {}
+    </script>
+
   </body>
 </html>
 

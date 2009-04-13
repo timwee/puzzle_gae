@@ -143,3 +143,14 @@ div.grey-panel {
 .headline {
   margin: 0 1.2em .8em 1.2em;
 }
+#footer {
+  background: #0C1216;
+  position:relative;
+  height: 30px;
+  text-align: center;
+}
+
+#footer a {
+  color: white;
+  vertical-align: middle;
+}
