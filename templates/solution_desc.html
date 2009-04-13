@@ -1,28 +1,22 @@
-<div id="solution_desc_block" >
-  <div id="solution_title" class="box span-4">
-    <p class="caps">Solution Title: </p>
+<div class="span-22 box last solution_block">
+  <div class="stats_container span-3">
+    <div class="count_button span-2 status">
+      <span class="count-post">
+        <strong>placeholder</strong> 
+      </span>
+      votes 
+    </div>      
   </div>
 
-  <div class="span-18 last box">
-    <p class="caps">{{ solution.title }}</p>
-  </div>
-
-  <div class="grey-panel span-24 last ">
-    <div id="solution_author" class="box span-4 grey-panel" >
-      <p class="caps">Author:</p>
+  <div class="summary span-18">
+    <h3><a href="{{ solution.get_absolute_url }}">{{ solution.title }}</a></h3>
+    <div class="blurb">
+      solved in {{ solution.language }}
     </div>
-    <div class="last span-18 box grey-panel">
-      <p>{{ solution.author|default_if_none:"Anonymous" }}</p>  
-    </div>
   </div>
-  <div id="solution_posted" class="box span-4" >
-    <p class="caps">Posted:</p>
-  </div>
-  <div class="last span-18 box">
-    <p class="grey">{{ solution.posted|timesince }}</p>  
-  </div>
+</div>  
 
-  {% include "third_party.html" %}
+{% include "third_party.html" %}
 
   <div id="solution_code" class="span-24 code">
     {{ solution.formatted_code|safe }}

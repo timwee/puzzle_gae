@@ -4,11 +4,15 @@
 
 {% block content %}
   
+<h2 class="headline"> Puzzle Description </h2>
   {% include "puzzle_blurb.html" %}
+  
 <div class="span-24" id="solution">
   <hr style="height:2px;" />
+  <h2 class="headline">Solution Detail </h2>
+
   {% include "solution_desc.html" %}
-  </div>
+</div>
 <div id="submit_solution" class="box clear">
   <a href="{% url puzzles.views.create_solution solution.puzzle.key.id %}">
     <img src="/static/images/submit_another_sol.png" />

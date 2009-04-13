@@ -4,8 +4,7 @@
 {% block title %} Puzzle: {{ puzzle.title }} {% endblock %}
 
 {% block content %}
-  {% include "puzzle_desc.html" %}
-  
+  {% include "puzzle_blurb.html" %}
   {% include "third_party.html" %}
 <div class="span-24" id="solutions">
   {% show_solutions puzzle %} 

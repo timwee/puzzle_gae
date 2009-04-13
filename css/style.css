@@ -89,7 +89,8 @@ div.grey-panel {
 }
 
 .puzzle_block {
-  height: 150px;
+  height: 130px;
+  padding: 0 0 0 1.1em;
 }
 .count_button {
   background: #1F2B33 none repeat scroll 0 0;
@@ -111,7 +112,7 @@ div.grey-panel {
   margin-right: 8px;
 }
 .blurb {
-  max-height: 90px;
+  max-height: 70px;
   margin 0;
   padding: 0 0 5px;
   overflow: hidden;
@@ -123,7 +124,6 @@ div.grey-panel {
 
 .blurb_text {
   font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
-  line-height:1.3;
 }
 
 .errorlist {
@@ -135,4 +135,11 @@ div.grey-panel {
   border-width: border-width;
   list-style: none;
 
+}
+
+#header {
+  margin: 0 0 0 1.2em;
+}
+.headline {
+  margin: 0 1.2em .8em 1.2em;
 }
