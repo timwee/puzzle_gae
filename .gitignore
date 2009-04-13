@@ -25,3 +25,4 @@ syntax: glob
 # release folder
 release
 django.zip
+pygments.zip
