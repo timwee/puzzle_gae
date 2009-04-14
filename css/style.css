@@ -185,6 +185,12 @@ div.grey-panel {
   margin: 0 8px 0 0;
 }
 
+li.tabdrop {
+  background: white url(/static/images/droparrowgray.gif) no-repeat scroll right center;
+  margin-left: 3px;
+  padding: 2px 21px 1px 5px;
+}
+
 div.tab_choices_container {
   border-bottom: 1px solid #666666;
   background: #0C1216 none repeat scroll 0 0; 
