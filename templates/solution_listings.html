@@ -4,7 +4,6 @@
   </a>
 </div>
 <div id="solution_list" class="span-24 last ">
-  {% for s in solutions %}
   <div class="span-24 last tab_choices_container" >
     <div class="span-6"><h2>Solutions</h2></div>
       <ul class="tab_choices">
@@ -13,7 +12,9 @@
         <li>Most Recent</li>
       </ul>
   </div>
-  <hr width="1px" background="#FFFFFF" />
+
+  {% for s in solutions %}
+    <hr width="1px" background="#FFFFFF" />
   <div class="span-22 box last solution_block">
     <div class="stats_container span-3">
       <div class="count_button span-2 status">

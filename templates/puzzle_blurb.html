@@ -28,13 +28,16 @@
 <script>
   $('#read_more').click(function() {
     $('#puzzle_desc_block').removeClass('puzzle_block');
-    $('.blurb').switchClass('blurb', 'full_blurb');
+    $('.blurb').addClass('full_blurb');
+    $('.full_blurb').removeClass('blurb');
     $('#read_more').hide();
     $('#hide_blurb').show();
   });
   $('#hide_blurb').click(function() {
     $('#puzzle_desc_block').addClass('puzzle_block');
-    $('.full_blurb').switchClass('full_blurb', 'blurb');
+    $('.full_blurb').addClass('blurb');
+    $('.blurb').removeClass('full_blurb');
+
     $('#hide_blurb').hide();
     $('#read_more').show();
   });
