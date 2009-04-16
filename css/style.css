@@ -208,3 +208,7 @@ div.tab_choices_container {
   position: absolute;
   bottom:0px;
 }
+
+#sol_title {
+  padding-left: 40px;
+}
