@@ -142,8 +142,12 @@ def edit_solution(request, puzzle_id, solution_id):
     if errors:
       return respond(request,"solution_form.html", {'solution_form' : form, 'puzzle' : puzzle })
 
-def solutions_by_date(request):
-  pass
+def solutions_by_date(request, puzzle_id):
+  q = db.Query(Solution).filter('puzzle =', get_object_or_404(Puzzle, puzzle_id))
+  q.order('-posted')
+  solutions = q.fetch(limit=10)
+  return respond(request,"solution_listings.html", {'solutions':solutions})
+
 
 ## Helpers ##
 def get_object_or_404(model_kls, id):
