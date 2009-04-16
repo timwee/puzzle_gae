@@ -37,6 +37,34 @@ class Prog_Language(object):
 		('tcl','tcl')
   )
 
+  SYNTAX_MAP = {
+		'':'--',
+		'actionscript':'ActionScript',
+		'c':'C',
+		'cpp':'C++',
+		'c#':'C#',
+		'clojure':'Clojure',
+		'cl':'Common Lisp',
+		'erlang':'Erlang',
+		'fortran':'Fortran',
+		'haskell':'Haskell',
+		'io':'io',
+		'java':'Java',
+		'javascript':'javascript',
+		'lua':'Lua',
+		'ocaml':'OCaml',
+		'objective-c':'objective-c',
+		'perl':'perl',
+		'php':'PHP',
+		'python':'Python',
+		'ruby':'Ruby',
+		'scala':'Scala',
+		'scheme':'Scheme',
+		'smalltalk':'Smalltalk',
+		'tcl':'tcl'
+  }
+
+
 from google.appengine.ext import db
 
 class HookedModel(db.Model):

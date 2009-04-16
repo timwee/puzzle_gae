@@ -212,3 +212,23 @@ div.tab_choices_container {
 #sol_title {
   padding-left: 40px;
 }
+
+.hidden {
+  display:none;
+}
+
+.tab_choices ul {
+  height: 0px;
+  right: -18px;
+  list-style-type: none;
+  white-space: nowrap;
+  position: absolute;
+}
+
+.tab_choices ul li {
+  display: block;
+  width: 100px;
+  float: left;
+  clear:both;
+}
+
