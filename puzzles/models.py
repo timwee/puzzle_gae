@@ -110,6 +110,9 @@ class Solution(HookedModel):
   code = db.TextProperty(required=True)
   formatted_code = db.TextProperty()
 
+  def language_full_name(self):
+    return Prog_Language.SYNTAX_MAP.get(self.language, self.language)
+
   def format_code(self):
     if not self.formatted_code:
       self.formatted_code = self.create_formatted_code()

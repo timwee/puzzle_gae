@@ -97,7 +97,7 @@ def edit_puzzle(request, puzzle_id):
 
 def view_puzzle(request, puzzle_id):
   puzzle = get_object_or_404(Puzzle, puzzle_id)
-  puzzle_langs = set([Prog_Language.SYNTAX_MAP[solution.language] for solution in puzzle.solution_set])
+  puzzle_langs = set([Prog_Language.SYNTAX_MAP.get(solution.language, solution.language) for solution in puzzle.solution_set])
   return respond(request,"puzzle_detail.html", {'puzzle' : puzzle, 'puzzle_langs':puzzle_langs })
 
 def create_solution(request, puzzle_id):

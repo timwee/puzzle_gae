@@ -231,4 +231,8 @@ div.tab_choices_container {
   float: left;
   clear:both;
 }
+.tagline {
+  color: #888888;
+  font-size: small;
+}
 

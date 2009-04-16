@@ -8,13 +8,16 @@
     </div>      
   </div>
 
-  <div class="summary span-18">
-    <h3><a href="{{ solution.get_absolute_url }}">{{ solution.title }}</a></h3>
-    <div class="blurb">
-      solved in {{ solution.language }}
+    <div class="summary span-18 ">
+      <h3>{{ solution.title }}</h3>
     </div>
-  </div>
-</div>  
+
+    <div class="span-22">
+      <p class="tagline">
+        submitted {{ solution.posted|timesince }} ago by {{ solution.author|default_if_none:"Anonymous" }} using {{ solution.language_full_name }}
+      </p>
+    </div>
+</div>
 
 {% include "third_party.html" %}
 

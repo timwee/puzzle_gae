@@ -10,14 +10,17 @@
       </div>      
     </div>
 
-    <div class="summary span-18">
+    <div class="summary span-18 ">
       <h3><a href="{{ s.get_absolute_url }}">{{ s.title }}</a></h3>
-      <div class="blurb">
-        solved in {{ s.language }}
-      </div>
-      <span style="display:inline">
+      <span style="display:inline;padding:0px;margin:0px;">
         <a href="{{ s.get_absolute_url }}">Read more</a>
       </span>
+    </div>
+
+    <div class="span-22">
+      <p class="tagline">
+        submitted {{ s.posted|timesince }} ago by {{ s.author|default_if_none:"Anonymous" }} using {{ s.language_full_name }}
+      </p>
     </div>
   </div>  
 
