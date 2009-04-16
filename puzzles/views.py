@@ -97,7 +97,8 @@ def edit_puzzle(request, puzzle_id):
 
 def view_puzzle(request, puzzle_id):
   puzzle = get_object_or_404(Puzzle, puzzle_id)
-  return respond(request,"puzzle_detail.html", {'puzzle' : puzzle })
+  puzzle_langs = set([Prog_Language.SYNTAX_MAP[solution.language] for solution in puzzle.solution_set])
+  return respond(request,"puzzle_detail.html", {'puzzle' : puzzle, 'puzzle_langs':puzzle_langs })
 
 def create_solution(request, puzzle_id):
   puzzle = get_object_or_404(Puzzle, puzzle_id)
@@ -141,6 +142,10 @@ def edit_solution(request, puzzle_id, solution_id):
     if errors:
       return respond(request,"solution_form.html", {'solution_form' : form, 'puzzle' : puzzle })
 
+def solutions_by_date(request):
+  pass
+
+## Helpers ##
 def get_object_or_404(model_kls, id):
   result = model_kls.get_by_id(int(id))
   if not result:
