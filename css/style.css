@@ -206,7 +206,7 @@ div.tab_choices_container {
   margin-bottom: 0px;
   right: 7px;
   position: absolute;
-  bottom:0px;
+  bottom:-3px;
 }
 
 #sol_title {
