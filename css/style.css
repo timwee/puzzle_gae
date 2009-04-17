@@ -177,7 +177,7 @@ div.grey-panel {
 .tab_choices li {
   font-weight: bold;
   background: white;
-  color: #0C1216;
+  color: #0077CC;
   float: right;
   padding: 2px 6px 0 2px;
   z-index:100;
@@ -218,6 +218,7 @@ div.tab_choices_container {
 }
 
 .tab_choices ul {
+  color: #0077CC;
   height: 0px;
   right: -18px;
   list-style-type: none;
@@ -226,6 +227,7 @@ div.tab_choices_container {
 }
 
 .tab_choices ul li {
+  color: #0077CC;
   display: block;
   width: 100px;
   float: left;

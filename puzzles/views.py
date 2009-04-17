@@ -97,7 +97,7 @@ def edit_puzzle(request, puzzle_id):
 
 def view_puzzle(request, puzzle_id):
   puzzle = get_object_or_404(Puzzle, puzzle_id)
-  puzzle_langs = set([Prog_Language.SYNTAX_MAP.get(solution.language, solution.language) for solution in puzzle.solution_set])
+  puzzle_langs = set([(solution.language, Prog_Language.SYNTAX_MAP.get(solution.language, solution.language)) for solution in puzzle.solution_set])
   return respond(request,"puzzle_detail.html", {'puzzle' : puzzle, 'puzzle_langs':puzzle_langs })
 
 def create_solution(request, puzzle_id):
@@ -148,6 +148,10 @@ def solutions_by_date(request, puzzle_id):
   solutions = q.fetch(limit=10)
   return respond(request,"solution_listings.html", {'solutions':solutions})
 
+def solutions_by_lang(request, puzzle_id, language):
+  q = db.Query(Solution).filter('puzzle =', get_object_or_404(Puzzle, puzzle_id)).filter('language =', language)
+  solutions = q.fetch(limit=10)
+  return respond(request,"solution_listings.html", {'solutions':solutions})
 
 ## Helpers ##
 def get_object_or_404(model_kls, id):

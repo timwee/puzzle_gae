@@ -19,8 +19,8 @@
           <li class="tabdrop">
             Filter By Programming Language
             <ul class="hidden dropchoices">
-              {% for p_lang in puzzle_langs %}
-              <li>{{ p_lang }}</li>
+              {% for lang_key,p_lang in puzzle_langs %}
+              <li><a class="ajax_order tabdrop" href="{% url puzzles.views.solutions_by_lang puzzle.key.id lang_key %}">{{ p_lang }}</a></li>
               {% endfor %}
             </ul>
           </li>
