@@ -2,11 +2,8 @@ from django.conf.urls.defaults import *
 
 from views import *
 
-urlpatterns = patterns('django.views.generic.simple',
-    (r'^$', 'direct_to_template', {'template' : 'index.html'}),
-  )
-
-urlpatterns += patterns('puzzles.views',
+urlpatterns = patterns('puzzles.views',
+  (r'^$', 'all_puzzles'),
   (r'^puzzles$', 'all_puzzles'),
   (r'^puzzle/create', 'create_puzzle'),
   (r'^puzzle/(?P<puzzle_id>\d+)/view$', 'view_puzzle'),
