@@ -153,6 +153,18 @@ def solutions_by_lang(request, puzzle_id, language):
   solutions = q.fetch(limit=10)
   return respond(request,"solution_listings.html", {'solutions':solutions})
 
+@login_required
+def voteup_solution(request, solution_id):
+  solution = get_object_or_404(Solution, solution_id)
+  solution.voteup()
+  return respond(request, "solution_detail.html", {'puzzle': solution.puzzle, 'solution': solution })
+
+@login_required
+def votedown_solution(request, solution_id):
+  solution = get_object_or_404(Solution, solution_id)
+  solution.votedown()
+  return respond(request, "solution_detail.html", {'puzzle': solution.puzzle, 'solution': solution })
+
 ## Helpers ##
 def get_object_or_404(model_kls, id):
   result = model_kls.get_by_id(int(id))

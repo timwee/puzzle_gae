@@ -79,6 +79,10 @@ class Solution_To_Puzzle_Test(GAEModelTest):
     self.failIf(self.puzzle.solution_set.count() <> 1)
     self.assertEqual(self.puzzle.key(), self.solution.puzzle.key())
 
+class Vote_Test(GAEModelTest):
+
+  pass
+
 if __name__ == "__main__":
   unittest.main()
 

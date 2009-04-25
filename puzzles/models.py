@@ -109,6 +109,29 @@ class Solution(HookedModel):
   title = db.StringProperty(required=True)
   code = db.TextProperty(required=True)
   formatted_code = db.TextProperty()
+  votes = db.IntegerProperty()
+
+  def get_votes_by(self, user, limit=1):
+    if not user:
+      return None
+    q = db.Query(Vote).filter('voter =', user).filter('item =', self).order('-voted_date')
+    return q.fetch(limit=limit)
+
+  def voteup(self):
+    if not self.votes:
+      self.votes = 0
+    self.votes = self.votes + 1
+    self.put()
+    vote = Vote(item=self, weight=1)
+    vote.put()
+
+  def votedown(self):
+    if not self.votes:
+      self.votes = 0
+    self.votes = self.votes - 1
+    self.put()
+    vote = Vote(item=self, weight=-1)
+    vote.put()
 
   def language_full_name(self):
     return Prog_Language.SYNTAX_MAP.get(self.language, self.language)
@@ -134,6 +157,12 @@ class Solution(HookedModel):
             'puzzle_id' : str(self.puzzle.key().id()),
             'solution_id' : str(self.key().id()), })
 
+
+class Vote(db.Model):
+  voter = db.UserProperty(auto_current_user_add=True)
+  item = db.ReferenceProperty(Solution, required=True)
+  voted_date = db.DateTimeProperty(auto_now=True)
+  weight = db.IntegerProperty(default=1)
 
 class Account(db.Model):
   user = db.UserProperty(auto_current_user_add=True, required=True)

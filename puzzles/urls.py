@@ -13,4 +13,6 @@ urlpatterns = patterns('puzzles.views',
   (r'^puzzle/(?P<puzzle_id>\d+)/solution/create$', 'create_solution'),
   (r'^puzzle/(?P<puzzle_id>\d+)/solution/(?P<solution_id>\d+)/edit$', 'edit_solution'),
   (r'^puzzle/(?P<puzzle_id>\d+)/solution/(?P<solution_id>\d+)/view$', 'view_solution'),
+  (r'^solution/(?P<solution_id>\d+)/voteup$', 'voteup_solution'),
+  (r'^solution/(?P<solution_id>\d+)/votedown$', 'votedown_solution'),
   )

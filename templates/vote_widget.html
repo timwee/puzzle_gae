@@ -1,0 +1,21 @@
+<div class="stats_container span-3">
+  <div class="span-1 vote_block">
+    {% if voted_up %}
+      <img src="/static/images/upmod.gif" class="centered_block" />
+    {% else %}
+      <a href="{% url puzzles.views.voteup_solution solution.key.id %}" />
+        <img src="/static/images/up.gif" class="centered_block" />
+      </a>
+    {% endif %}
+    <span class="count-post centered_block">
+      <strong>{{ votes }}</strong> 
+    </span>
+    {% if voted_down %}
+      <img src="/static/images/downmod.gif" class="centered_block" />
+    {% else %}
+      <a href="{% url puzzles.views.votedown_solution solution.key.id %}" />
+        <img src="/static/images/down.gif" class="centered_block" />
+      </a>
+    {% endif %}
+  </div>      
+</div>

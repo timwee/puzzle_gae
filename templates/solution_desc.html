@@ -1,4 +1,8 @@
-<div class="span-22 box last solution_block">
+{% load template_library %}
+
+<div class="span-22 box last ">
+    {% vote_widget solution %}
+
 
     <div class="summary span-18 ">
       <h3>{{ solution.title }}</h3>

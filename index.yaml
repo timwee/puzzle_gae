@@ -10,9 +10,32 @@ indexes:
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
-# Used 12 times in query history.
+# Unused in query history -- copied from input.
 - kind: Solution
   properties:
   - name: puzzle
   - name: posted
+    direction: desc
+
+# Used 7 times in query history.
+- kind: Vote
+  properties:
+  - name: item
+  - name: user
+  - name: voted_date
+    direction: desc
+
+# Used 20 times in query history.
+- kind: Vote
+  properties:
+  - name: item
+  - name: voter
+  - name: voted_date
+
+# Used 6 times in query history.
+- kind: Vote
+  properties:
+  - name: item
+  - name: voter
+  - name: voted_date
     direction: desc
