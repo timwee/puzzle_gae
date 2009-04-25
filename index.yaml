@@ -32,7 +32,7 @@ indexes:
   - name: voter
   - name: voted_date
 
-# Used 6 times in query history.
+# Used 24 times in query history.
 - kind: Vote
   properties:
   - name: item
