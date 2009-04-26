@@ -55,10 +55,8 @@ class SolutionForm(forms.Form):
 def all_puzzles(request):
   q = Puzzle.all()
   q.order('-published')
-  puzzles = q.fetch(limit=10)
+  puzzles = q.fetch(limit=999)
   return respond(request,"all_puzzles.html", { 'puzzles' : puzzles })
-
-
 
 @login_required
 def create_puzzle(request):
@@ -145,12 +143,17 @@ def edit_solution(request, puzzle_id, solution_id):
 def solutions_by_date(request, puzzle_id):
   q = db.Query(Solution).filter('puzzle =', get_object_or_404(Puzzle, puzzle_id))
   q.order('-posted')
-  solutions = q.fetch(limit=10)
+  solutions = q.fetch(limit=999)
   return respond(request,"solution_listings.html", {'solutions':solutions})
 
 def solutions_by_lang(request, puzzle_id, language):
   q = db.Query(Solution).filter('puzzle =', get_object_or_404(Puzzle, puzzle_id)).filter('language =', language)
-  solutions = q.fetch(limit=10)
+  solutions = q.fetch(limit=999)
+  return respond(request,"solution_listings.html", {'solutions':solutions})
+
+def solutions_by_votes(request, puzzle_id):
+  q = db.Query(Solution).filter('puzzle =', get_object_or_404(Puzzle, puzzle_id)).order('-votes')
+  solutions = q.fetch(limit=999)
   return respond(request,"solution_listings.html", {'solutions':solutions})
 
 @login_required

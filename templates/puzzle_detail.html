@@ -24,7 +24,7 @@
               {% endfor %}
             </ul>
           </li>
-          <li><a href="#">Votes</a></li>
+          <li><a class="ajax_order" href="{% url puzzles.views.solutions_by_votes puzzle.key.id %}">Votes</a></li>
           <li><a class="ajax_order" href="{% url puzzles.views.solutions_by_date puzzle.key.id %}">Most Recent</a></li>
         </ul>
       </div>
